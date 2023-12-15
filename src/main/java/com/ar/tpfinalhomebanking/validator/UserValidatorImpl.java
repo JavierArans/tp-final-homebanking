@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import java.time.Year;
 import java.util.regex.Pattern;
 
 @Component
@@ -25,8 +27,8 @@ public class UserValidatorImpl implements UserValidator{
         if (dto.getUsername().length() < 3) {
             this.message("El nombre de usuario debe tener al menos 3 caracteres");
         }
-        if (dto.getUsername().length() > 10){
-            this.message("El nombre de usuario debe tener como maximo 10 caracteres");
+        if (dto.getUsername().length() > 15){
+            this.message("El nombre de usuario debe tener como maximo 15 caracteres");
         }
         if (dto.getDni().length() > 8){
             this.message("El DNI solo puede contener un máximo de 8 caracteres");
@@ -43,9 +45,12 @@ public class UserValidatorImpl implements UserValidator{
         if (!validarPassword(dto.getPassword())) {
             this.message("La contraseña debe contener al menos un número, una letra mayúscula y algún símbolo/caracter especial");
         }
-        if (LocalDateTime.now().getYear() - dto.getBirthday_date().getYear() > 18) {
-            this.message("Debes ser mayor de 18 años para registrarte");
-        }
+        //int currentYear = Year.now().getValue();
+        //int birthYear = dto.getBirthday_date().getYear();
+
+        //if ((currentYear - birthYear) < 18) {
+        //    this.message("Debes ser mayor de 18 años para registrarte");
+        //}
 
     }
 

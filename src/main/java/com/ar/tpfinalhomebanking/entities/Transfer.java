@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "homebanking_transfer")
@@ -25,15 +26,17 @@ public class Transfer {
     private BigDecimal amount;
 
     @Column(name = "cuenta_origen")
-    private String accountOrigin;
+    private Long accountOrigin;
 
     @Column(name = "cuenta_destino")
-    private String accountdestiny;
+    private Long accountdestiny;
 
     @Column(name = "fecha_creacion")
-    private LocalDateTime created_at;
+    private Date created_at;
 
     @Column(name = "fecha_modificacion")
     private LocalDateTime updated_at;
+
+
 
 }
